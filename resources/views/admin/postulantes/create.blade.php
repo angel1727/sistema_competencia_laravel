@@ -1,12 +1,12 @@
-<div class="modal fade" id="modalAgregar" tabindex="-1" aria-labelledby="modalAgregarLabel" aria-hidden="true">
+<div class="modal fade" id="postulanteModal" tabindex="-1" aria-labelledby="postulanteModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-scrollable">
         <div class="modal-content">
-            <form method="post" action="{{ route('admin.postulantes.store') }}">
+            <form id="postulanteForm" method="post" action="{{ route('admin.postulantes.store') }}">
                 @csrf
                 <div class="modal-header bg-success text-white">
                     <h5 class="modal-title" id="modalAgregarLabel"><i class="fas fa-user-plus me-2"></i>Registrar
                         Postulante</h5>
-                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Cerrar"></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
                 <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
                     <!-- Nav tabs -->
@@ -61,6 +61,7 @@
                     <div class="tab-content border rounded-3 p-3">
                         <!-- 📌 Datos Personales -->
                         <div class="tab-pane fade show active" id="datos" role="tabpanel">
+                            <h5 class="text-secondary">Datos Personales</h5>
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label class="form-label">Nombre:</label>
@@ -118,6 +119,7 @@
                         </div>
                         <!-- 📌 Educación -->
                         <div class="tab-pane fade" id="educacion" role="tabpanel">
+                            <h5 class="text-secondary">Educación</h5>
                             <div id="educacionContainer">
                                 <div class="educacion-block border p-3 rounded mb-3 position-relative">
                                     <!-- Botón eliminar -->
@@ -144,7 +146,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Botón para agregar más ISO -->
+                            <!-- Botón para agregar más educacion -->
                             <div class="text-end">
                                 <button type="button" class="btn btn-outline-success" onclick="agregarEducacion()">
                                     <i class="fas fa-plus-circle me-1"></i> Agregar otra Educacion
@@ -153,11 +155,12 @@
                         </div>
                         <!-- 📌 Capacitacion y Formacion -->
                         <div class="tab-pane fade" id="capacitacionInf" role="tabpanel">
+                            <h5 class="text-secondary">Capacitación y Formación</h5>
                             <div id="capacitacionContainer">
                                 <div class="capacitacion-block border p-3 rounded mb-3 position-relative">
                                     <!-- Botón eliminar -->
                                     <button type="button" class="btn btn-danger btn-sm top-0 end-0 m-2"
-                                        onclick="eliminarEducacion(this)"> <i class="fas fa-times"></i>
+                                        onclick="eliminarCapacitacion(this)"> <i class="fas fa-times"></i>
                                     </button>
                                     <div class="row g-3">
                                         <div class="col-md-6">
@@ -207,18 +210,19 @@
                             </div>
                             <!-- Botón para agregar más ISO -->
                             <div class="text-end">
-                                <button type="button" class="btn btn-outline-success" onclick="agregarEducacion()">
-                                    <i class="fas fa-plus-circle me-1"></i> Agregar otra Educacion
+                                <button type="button" class="btn btn-outline-success" onclick="agregarCapacitacion()">
+                                    <i class="fas fa-plus-circle me-1"></i> Agregar otro bloque Capacitacion y Formacion
                                 </button>
                             </div>
                         </div>
                         <!-- 📌 Idiomas -->
                         <div class="tab-pane fade" id="Idiomas" role="tabpanel">
+                            <h5 class="text-secondary">Idiomas</h5>
                             <div id="idiomasContainer">
                                 <div class="idiomas-block border p-3 rounded mb-3 position-relative">
                                     <!-- Botón eliminar -->
                                     <button type="button" class="btn btn-danger btn-sm top-0 end-0 m-2"
-                                        onclick="eliminarEducacion(this)"> <i class="fas fa-times"></i>
+                                        onclick="eliminarIdiomas(this)"> <i class="fas fa-times"></i>
                                     </button>
                                     <div class="row g-3">
                                         <div class="col-md-4">
@@ -259,20 +263,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Botón para agregar más ISO -->
+                            <!-- Botón para agregar más Idiomas -->
                             <div class="text-end">
-                                <button type="button" class="btn btn-outline-success" onclick="agregarEducacion()">
-                                    <i class="fas fa-plus-circle me-1"></i> Agregar otra Educacion
+                                <button type="button" class="btn btn-outline-success" onclick="agregarIdiomas()">
+                                    <i class="fas fa-plus-circle me-1"></i> Agregar otro Idioma
                                 </button>
                             </div>
                         </div>
                         <!-- 📌 Conocimiento en uso de tecnologia de la informacion y comunicacion -->
                         <div class="tab-pane fade" id="ConocimientosTIC" role="tabpanel">
+                            <h5 class="text-secondary">Conocimiento en uso de tecnologia de la informacion y comunicacion</h5>
                             <div id="conocimientosTICContainer">
                                 <div class="conocimientosTIC-block border p-3 rounded mb-3 position-relative">
                                     <!-- Botón eliminar -->
                                     <button type="button" class="btn btn-danger btn-sm top-0 end-0 m-2"
-                                        onclick="eliminarEducacion(this)"> <i class="fas fa-times"></i>
+                                        onclick="eliminarConocimientoTIC(this)"> <i class="fas fa-times"></i>
                                     </button>
                                     <div class="row g-3">
                                         <div class="col-md-8">
@@ -311,15 +316,16 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- Botón para agregar más ISO -->
+                            <!-- Botón para agregar más conocimiento TIC -->
                             <div class="text-end">
-                                <button type="button" class="btn btn-outline-success" onclick="agregarEducacion()">
-                                    <i class="fas fa-plus-circle me-1"></i> Agregar otra Educacion
+                                <button type="button" class="btn btn-outline-success" onclick="agregarConocimientoTIC()">
+                                    <i class="fas fa-plus-circle me-1"></i> Agregar otro bloque de Conocimiento en uso de TIC
                                 </button>
                             </div>
                         </div>
                         <!-- 📌 Informacion Laboral -->
                         <div class="tab-pane fade" id="InformacionLab" role="tabpanel">
+                            <h5 class="text-secondary">Conocimiento en uso de tecnologia de la informacion y comunicacion</h5>
                             <div class="row g-3">
                                 <h5 class="text-secondary">Informacion donde Trabaja Actualmente</h5>
                                 <br>
@@ -373,7 +379,7 @@
                                 <div class="experienciaLab-block border p-3 rounded mb-3 position-relative">
                                     <!-- Botón eliminar -->
                                     <button type="button" class="btn btn-danger btn-sm top-0 end-0 m-2"
-                                        onclick="eliminarEducacion(this)"> <i class="fas fa-times"></i>
+                                        onclick="eliminarExperienciaLab(this)"> <i class="fas fa-times"></i>
                                     </button>
                                     <div class="row g-3">
                                         <div class="col-md-6">
@@ -411,18 +417,18 @@
                             </div>
                             <!-- Botón para agregar más ISO -->
                             <div class="text-end">
-                                <button type="button" class="btn btn-outline-success" onclick="agregarEducacion()">
-                                    <i class="fas fa-plus-circle me-1"></i> Agregar otra Educacion
+                                <button type="button" class="btn btn-outline-success" onclick="agregarExperienciaLab()">
+                                    <i class="fas fa-plus-circle me-1"></i> Agregar otro bloque de Experiencia Laboral
                                 </button>
                             </div>
                         </div>
                         <!-- 📌 Experiencia en Evaluaciones y/o auditorias de 1ra, 2da y 3ra parte  -->
                         <div class="tab-pane fade" id="evaluacion" role="tabpanel">
-                            <div id="evaluacionLabContainer">
+                            <div id="evaluacionContainer">
                                 <div class="evaluacion-block border p-3 rounded mb-3 position-relative">
                                     <!-- Botón eliminar -->
                                     <button type="button" class="btn btn-danger btn-sm top-0 end-0 m-2"
-                                        onclick="eliminarEducacion(this)"> <i class="fas fa-times"></i>
+                                        onclick="eliminarEvaluacion(this)"> <i class="fas fa-times"></i>
                                     </button>
                                     <div class="row g-3">
                                         <div class="col-md-6">
@@ -468,8 +474,8 @@
                             </div>
                             <!-- Botón para agregar más ISO -->
                             <div class="text-end">
-                                <button type="button" class="btn btn-outline-success" onclick="agregarEducacion()">
-                                    <i class="fas fa-plus-circle me-1"></i> Agregar otra Educacion
+                                <button type="button" class="btn btn-outline-success" onclick="agregarEvaluacion()">
+                                    <i class="fas fa-plus-circle me-1"></i> Agregar otro bloque de Experiencia en Evaluaciones y/o Auditorias
                                 </button>
                             </div>
                         </div>
@@ -479,7 +485,7 @@
                                 <div class="experienciaImplementacion-block border p-3 rounded mb-3 position-relative">
                                     <!-- Botón eliminar -->
                                     <button type="button" class="btn btn-danger btn-sm top-0 end-0 m-2"
-                                        onclick="eliminarEducacion(this)"> <i class="fas fa-times"></i>
+                                        onclick="eliminarExperienciaImpl(this)"> <i class="fas fa-times"></i>
                                     </button>
                                     <div class="row g-3">
                                         <div class="col-md-6">
@@ -508,8 +514,8 @@
                             </div>
                             <!-- Botón para agregar más ISO -->
                             <div class="text-end">
-                                <button type="button" class="btn btn-outline-success" onclick="agregarEducacion()">
-                                    <i class="fas fa-plus-circle me-1"></i> Agregar otra Educacion
+                                <button type="button" class="btn btn-outline-success" onclick="agregarExperienciaImpl()">
+                                    <i class="fas fa-plus-circle me-1"></i> Agregar otro bloque de Experiencia en Implementacion/Consultoria/Docencia/Facilitador
                                 </button>
                             </div>
                         </div>
@@ -518,6 +524,12 @@
                             <h5 class="text-secondary">ISO/IEC 17025 Lab. de Ensayo</h5>
                             <div id="ensayoContainer">
                                 <div class="ensayo-block border p-3 rounded mb-3 position-relative">
+                                    <!-- Botón eliminar este bloque -->
+                                    <button type="button"
+                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
+                                        onclick="eliminarEnsayo(this)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
                                     <div class="row g-3">
                                         <div class="col-md-4">
                                             <label class="form-label">Ensayo:</label>
@@ -536,18 +548,12 @@
                                             <input type="text" name="itemensayo[]" class="form-control">
                                         </div>
                                     </div>
-                                    <!-- Botón eliminar este bloque -->
-                                    <button type="button"
-                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
-                                        onclick="eliminarEnsayo(this)">
-                                        <i class="fas fa-times"></i>
-                                    </button>
                                 </div>
                             </div>
                             <!-- Botón para agregar otro ensayo -->
                             <div class="text-end">
                                 <button type="button" class="btn btn-outline-primary" onclick="agregarEnsayo()">
-                                    <i class="bi bi-plus-circle me-1"></i> Agregar otro 17025 ensayo
+                                    <i class="fas fa-plus-circle me-1"></i> Agregar otro bloque de ISO/IEC 17025 Lab. de Ensayo
                                 </button>
                             </div>
 
@@ -556,6 +562,12 @@
                             <h5 class="text-secondary">ISO/IEC 17025 Lab. de Calibracion</h5>
                             <div id="calibracionContainer">
                                 <div class="calibracion-block border p-3 rounded mb-3 position-relative">
+                                    <!-- Botón eliminar este bloque -->
+                                    <button type="button"
+                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
+                                        onclick="eliminarCalibracion(this)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
                                     <div class="row g-3">
                                         <div class="col-md-4">
                                             <label class="form-label">Magnitud:</label>
@@ -575,19 +587,13 @@
                                                 min="1">
                                         </div>
                                     </div>
-                                    <!-- Botón eliminar este bloque -->
-                                    <button type="button"
-                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
-                                        onclick="eliminarCalibracion(this)">
-                                        <i class="fas fa-times"></i>
-                                    </button>
                                 </div>
                             </div>
                             <!-- Botón para agregar otro ensayo -->
                             <div class="text-end">
                                 <button type="button" class="btn btn-outline-primary"
                                     onclick="agregarCalibracion()">
-                                    <i class="bi bi-plus-circle me-1"></i> Agregar otro 17025 Calib.
+                                    <i class="fas fa-plus-circle me-1"></i> Agregar otro bloque de ISO/IEC 17025 Lab. de Calibracion.
                                 </button>
                             </div>
 
@@ -596,6 +602,12 @@
                             <h5 class="text-secondary">ISO/IEC 15189 Lab. clinicos</h5>
                             <div id="clinicoContainer">
                                 <div class="clinico-block border p-3 rounded mb-3 position-relative">
+                                    <!-- Botón eliminar este bloque -->
+                                    <button type="button"
+                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
+                                        onclick="eliminarClinico(this)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
                                     <div class="row g-3">
                                         <div class="col-md-4">
                                             <label class="form-label">Area/Campo:</label>
@@ -619,18 +631,12 @@
                                                 min="1">
                                         </div>
                                     </div>
-                                    <!-- Botón eliminar este bloque -->
-                                    <button type="button"
-                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
-                                        onclick="eliminarClinico(this)">
-                                        <i class="fas fa-times"></i>
-                                    </button>
                                 </div>
                             </div>
                             <!-- Botón para agregar otro ensayo -->
                             <div class="text-end">
                                 <button type="button" class="btn btn-outline-primary" onclick="agregarClinico()">
-                                    <i class="bi bi-plus-circle me-1"></i> Agregar otro 15189
+                                    <i class="fas fa-plus-circle me-1"></i> Agregar otro bloque de ISO/IEC 15189 Lab. clinicos
                                 </button>
                             </div>
                             <!-- script de añadir esquema 17043 experto tecnico estadistico -->
@@ -638,6 +644,12 @@
                             <h5 class="text-secondary">ISO/IEC 17043 Experto Tecnico Estadistico</h5>
                             <div id="ETEContainer">
                                 <div class="ETE-block border p-3 rounded mb-3 position-relative">
+                                    <!-- Botón eliminar este bloque -->
+                                    <button type="button"
+                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
+                                        onclick="eliminarETE(this)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
                                     <div class="row g-3">
                                         <div class="col-md-4">
                                             <label class="form-label">Nombre del EA o CIL en el que Participo:</label>
@@ -664,27 +676,25 @@
                                                 min="1">
                                         </div>
                                     </div>
-                                    <!-- Botón eliminar este bloque -->
-                                    <button type="button"
-                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
-                                        onclick="eliminarETE(this)">
-                                        <i class="fas fa-times"></i>
-                                    </button>
                                 </div>
                             </div>
                             <!-- Botón para agregar otro ensayo -->
                             <div class="text-end">
                                 <button type="button" class="btn btn-outline-primary" onclick="agregarETE()">
-                                    <i class="bi bi-plus-circle me-1"></i> Agregar 17043 Exp. Tec. Est
+                                    <i class="fas fa-plus-circle me-1"></i> Agregar otro bloque de ISO/IEC 17043 Experto Tecnico Estadistico
                                 </button>
                             </div>
-
-
                             <!-- script de añadir esquema 17043 experto tecnico -->
                             <hr class="mt-4 mb-3">
                             <h5 class="text-secondary">ISO/IEC 17043 Experto Tecnico</h5>
                             <div id="ETContainer">
                                 <div class="ET-block border p-3 rounded mb-3 position-relative">
+                                    <!-- Botón eliminar este bloque -->
+                                    <button type="button"
+                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
+                                        onclick="eliminarET(this)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
                                     <div class="row g-3">
                                         <div class="col-md-4">
                                             <label class="form-label">Ensayo/Magnitud:</label>
@@ -709,18 +719,12 @@
                                                 min="1">
                                         </div>
                                     </div>
-                                    <!-- Botón eliminar este bloque -->
-                                    <button type="button"
-                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
-                                        onclick="eliminarET(this)">
-                                        <i class="fas fa-times"></i>
-                                    </button>
                                 </div>
                             </div>
                             <!-- Botón para agregar otro ensayo -->
                             <div class="text-end">
                                 <button type="button" class="btn btn-outline-primary" onclick="agregarET()">
-                                    <i class="bi bi-plus-circle me-1"></i> Agregar otro 17043 Exp. Tec
+                                    <i class="fas fa-plus-circle me-1"></i> Agregar otro bloque de ISO/IEC 17043 Experto Tecnico
                                 </button>
                             </div>
                             <!-- script de añadir esquema 17020  -->
@@ -728,6 +732,12 @@
                             <h5 class="text-secondary">ISO/IEC 17020 Organismo de Inspeccion</h5>
                             <div id="OIContainer">
                                 <div class="OI-block border p-3 rounded mb-3 position-relative">
+                                    <!-- Botón eliminar este bloque -->
+                                    <button type="button"
+                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
+                                        onclick="eliminarOI(this)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
                                     <div class="row g-3">
                                         <div class="col-md-4">
                                             <label class="form-label">Campo o Sector de Inspeccion:</label>
@@ -752,18 +762,12 @@
                                                 min="1">
                                         </div>
                                     </div>
-                                    <!-- Botón eliminar este bloque -->
-                                    <button type="button"
-                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
-                                        onclick="eliminarOI(this)">
-                                        <i class="fas fa-times"></i>
-                                    </button>
                                 </div>
                             </div>
                             <!-- Botón para agregar otro ensayo -->
                             <div class="text-end">
                                 <button type="button" class="btn btn-outline-primary" onclick="agregarOI()">
-                                    <i class="bi bi-plus-circle me-1"></i> Agregar otro 17020
+                                    <i class="fas fa-plus-circle me-1"></i> Agregar otro bloque de ISO/IEC 17020 Organismo de Inspeccion
                                 </button>
                             </div>
                             <!-- script de añadir esquema 17065  -->
@@ -771,6 +775,12 @@
                             <h5 class="text-secondary">ISO/IEC 17065 Organismo de Certificacion de Productos</h5>
                             <div id="OCPContainer">
                                 <div class="OCP-block border p-3 rounded mb-3 position-relative">
+                                    <!-- Botón eliminar este bloque -->
+                                    <button type="button"
+                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
+                                        onclick="eliminarOCP(this)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
                                     <div class="row g-3">
                                         <div class="col-md-4">
                                             <label class="form-label">Tipo de Certificacion</label>
@@ -798,18 +808,12 @@
                                                 min="1">
                                         </div>
                                     </div>
-                                    <!-- Botón eliminar este bloque -->
-                                    <button type="button"
-                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
-                                        onclick="eliminarOCP(this)">
-                                        <i class="fas fa-times"></i>
-                                    </button>
                                 </div>
                             </div>
                             <!-- Botón para agregar otro ensayo -->
                             <div class="text-end">
                                 <button type="button" class="btn btn-outline-primary" onclick="agregarOCP()">
-                                    <i class="bi bi-plus-circle me-1"></i> Agregar otro 17065
+                                    <i class="fas fa-plus-circle me-1"></i> Agregar otro bloque de ISO/IEC 17065 Organismo de Certificacion de Productos
                                 </button>
                             </div>
                             <!-- script de añadir esquema 17021-1  -->
@@ -818,6 +822,12 @@
                                 Gestion</h5>
                             <div id="OCSGContainer">
                                 <div class="OCSG-block border p-3 rounded mb-3 position-relative">
+                                    <!-- Botón eliminar este bloque -->
+                                    <button type="button"
+                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
+                                        onclick="eliminarOCSG(this)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
                                     <div class="row g-3">
                                         <div class="col-md-4">
                                             <label class="form-label">Sistemas de Gestion:</label>
@@ -841,18 +851,13 @@
                                                 min="1">
                                         </div>
                                     </div>
-                                    <!-- Botón eliminar este bloque -->
-                                    <button type="button"
-                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
-                                        onclick="eliminarOCSG(this)">
-                                        <i class="fas fa-times"></i>
-                                    </button>
                                 </div>
                             </div>
                             <!-- Botón para agregar otro ensayo -->
                             <div class="text-end">
                                 <button type="button" class="btn btn-outline-primary" onclick="agregarOCSG()">
-                                    <i class="bi bi-plus-circle me-1"></i> Agregar otro 17021
+                                    <i class="fas fa-plus-circle me-1"></i> Agregar otro bloque de ISO/IEC 17021-1 Organismo de Certificacion de Sistemas de
+                                Gestion
                                 </button>
                             </div>
                             <!-- script de añadir esquema 17024  -->
@@ -860,6 +865,12 @@
                             <h5 class="text-secondary">ISO/IEC 17024 Certificacion de Personas</h5>
                             <div id="CPContainer">
                                 <div class="CP-block border p-3 rounded mb-3 position-relative">
+                                    <!-- Botón eliminar este bloque -->
+                                    <button type="button"
+                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
+                                        onclick="eliminarCP(this)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
                                     <div class="row g-3">
                                         <div class="col-md-4">
                                             <label class="form-label">Sector o Campo:</label>
@@ -884,18 +895,12 @@
                                                 min="1">
                                         </div>
                                     </div>
-                                    <!-- Botón eliminar este bloque -->
-                                    <button type="button"
-                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
-                                        onclick="eliminarCP(this)">
-                                        <i class="fas fa-times"></i>
-                                    </button>
                                 </div>
                             </div>
                             <!-- Botón para agregar otro ensayo -->
                             <div class="text-end">
                                 <button type="button" class="btn btn-outline-primary" onclick="agregarCP()">
-                                    <i class="bi bi-plus-circle me-1"></i> Agregar otro 17024
+                                    <i class="fas fa-plus-circle me-1"></i> Agregar otro bloque de ISO/IEC 17024 Certificacion de Personas
                                 </button>
                             </div>
                             <!-- script de añadir esquema 17034  -->
@@ -903,6 +908,12 @@
                             <h5 class="text-secondary">ISO/IEC 17034 Proveedor de Materiales de Referencia</h5>
                             <div id="PMRContainer">
                                 <div class="PMR-block border p-3 rounded mb-3 position-relative">
+                                    <!-- Botón eliminar este bloque -->
+                                    <button type="button"
+                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
+                                        onclick="eliminarPMR(this)">
+                                        <i class="fas fa-times"></i>
+                                    </button>
                                     <div class="row g-3">
                                         <div class="col-md-4">
                                             <label class="form-label">Ensayo:</label>
@@ -931,25 +942,13 @@
                                                 min="1">
                                         </div>
                                     </div>
-                                    <!-- Botón eliminar este bloque -->
-                                    <button type="button"
-                                        class="btn btn-danger btn-sm  top-0 end-0 m-2"
-                                        onclick="eliminarPMR(this)">
-                                        <i class="fas fa-times"></i>
-                                    </button>
                                 </div>
-                            </div>
-                            <!-- Botón para agregar otro ensayo -->
-                            <div class="text-end">
-                                <button type="button" class="btn btn-outline-primary" onclick="agregarPMR()">
-                                    <i class="bi bi-plus-circle me-1"></i> Agregar otro 17034
-                                </button>
                             </div>
                             <!-- Botón para agregar más experiencias -->
                             <div class="text-end mb-3">
                                 <button type="button" class="btn btn-outline-primary"
-                                    onclick="agregarExperiencia()">
-                                    <i class="bi bi-plus-circle me-1"></i> Agregar otra experiencia
+                                    onclick="agregarPMR()">
+                                    <i class="fas fa-plus-circle me-1"></i> Agregar otra bloque de ISO/IEC 17034 Proveedor de Materiales de Referencia
                                 </button>
                             </div>
                         </div>
