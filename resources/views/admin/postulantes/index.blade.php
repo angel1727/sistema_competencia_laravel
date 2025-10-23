@@ -137,6 +137,78 @@
 @section('css')
     {{-- Add here extra stylesheets --}}
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+    <style>
+        /* Barra de pestañas con scroll horizontal */
+        .nav-tabs {
+            overflow-x: auto;
+            overflow-y: hidden;
+            flex-wrap: nowrap;
+            /* evita que bajen de línea */
+            -webkit-overflow-scrolling: touch;
+            /* scroll suave en móviles */
+            border-bottom: 2px solid #ddd;
+        }
+
+        /* Centrar el texto dentro de cada pestaña */
+        .nav-tabs .nav-link {
+            text-align: center;
+            white-space: nowrap;
+            /* evita que el texto se corte en varias líneas */
+            padding: 0.75rem 1.25rem;
+            /* más espacio para que se vea estético */
+            color: #495057;
+            /* gris oscuro por defecto */
+            transition: all 0.3s ease;
+        }
+
+        /* Hover (cuando pasas el mouse) */
+        .nav-tabs .nav-link:hover {
+            color: #28a745;
+            /* verde al pasar el mouse */
+        }
+
+        /* Activo (cuando está seleccionada la pestaña) */
+        .nav-tabs .nav-link.active {
+            color: #fff !important;
+            background-color: #28a745 !important;
+            border-color: #28a745 #28a745 #fff;
+            /* verde arriba, blanco abajo */
+            border-radius: 6px 6px 0 0;
+            /* bordes redondeados arriba */
+            font-weight: 600;
+        }
+
+        /* Ajuste del modal con scroll interno */
+        .modal-dialog {
+            max-height: 90vh;
+            /* Altura máxima del modal */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-body {
+            overflow-y: auto;
+            /* Scroll solo en el body */
+            max-height: calc(90vh - 120px);
+            /* resta header y footer */
+            padding: 1rem;
+        }
+
+        .modal-footer {
+            position: sticky;
+            bottom: 0;
+            background: #fff;
+            /* Fondo blanco para que no se pierda */
+            border-top: 1px solid #dee2e6;
+            z-index: 100;
+        }
+    </style>
 @stop
 
 @section('js')

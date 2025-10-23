@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('conocimiento_tic', function (Blueprint $table) {
-            $table->id('id_tic');
-            $table->string('herramienta_tecnologica')->nullable();
-            $table->string('nivel_conocimiento')->nullable();
-            $table->string('frecuencia_uso')->nullable();
-            $table->string('certificacion')->nullable();
-            $table->string('nombre_entidad_capacitacion')->nullable();
-            $table->date('fecha_tic')->nullable();
+        Schema::create('experiencia_impl_cons', function (Blueprint $table) {
+            $table->id('id_exp_impl_cons');
+            $table->string('organizacion_servicio');
+            $table->string('organizacion_beneficiada');
+            $table->string('funcion_impl');
+            $table->date('fecha_impl');
+            $table->integer('duracion_horas_impl');
             $table->unsignedBigInteger('id_postulante');
             $table->foreign('id_postulante')->references('id_postulante')->on('postulante')->onDelete('cascade');
             $table->timestamps();
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('conocimiento_tic');
+        Schema::dropIfExists('experienciaimplementacion');
     }
 };

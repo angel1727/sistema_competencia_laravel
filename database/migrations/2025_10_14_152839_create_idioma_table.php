@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('idiomas', function (Blueprint $table) {
-            $table->id('ididiomas');
+        Schema::create('idioma', function (Blueprint $table) {
+            $table->id('id_idioma');
             $table->string('idioma');
-            $table->string('nivel_escrito')->nullable();
+            $table->string('nivel_escritura')->nullable();
             $table->string('nivel_oral')->nullable();
             $table->string('nombre_curso')->nullable();
             $table->string('entidad_emisora')->nullable();
             $table->date('fecha_emision')->nullable();
-            $table->unsignedBigInteger('idpostulante');
-            $table->foreign('idpostulante')->references('idpostulante')->on('postulantes')->onDelete('cascade');
+            $table->unsignedBigInteger('id_postulante');
+            $table->foreign('id_postulante')->references('id_postulante')->on('postulante')->onDelete('cascade');
             $table->timestamps();
         });
     }

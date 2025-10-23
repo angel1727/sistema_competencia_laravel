@@ -347,7 +347,7 @@ return [
                     'url' => 'admin/postulantes',
                 ],
                 [
-                    'text' => 'level_one',
+                    'text' => 'Mensajeria',
                     'url' => '#',
                     // 'submenu' => [
                     //     [
@@ -371,7 +371,7 @@ return [
                     // ],
                 ],
                 [
-                    'text' => 'level_one',
+                    'text' => 'Calendario',
                     'url' => '#',
                 ],
             ],

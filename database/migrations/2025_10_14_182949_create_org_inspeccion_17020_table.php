@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('conocimiento_tic', function (Blueprint $table) {
-            $table->id('id_tic');
-            $table->string('herramienta_tecnologica')->nullable();
-            $table->string('nivel_conocimiento')->nullable();
-            $table->string('frecuencia_uso')->nullable();
-            $table->string('certificacion')->nullable();
-            $table->string('nombre_entidad_capacitacion')->nullable();
-            $table->date('fecha_tic')->nullable();
+        Schema::create('org_inspeccion_17020', function (Blueprint $table) {
+            $table->id('id_inspeccion');
+            $table->string('campo_sector')->nullable();
+            $table->string('sub_sector')->nullable();
+            $table->string('item_inspeccionado')->nullable();
+            $table->string('metodo_doc_normativo')->nullable();
+            $table->string('tiempo_exp_inspeccion')->nullable();
             $table->unsignedBigInteger('id_postulante');
             $table->foreign('id_postulante')->references('id_postulante')->on('postulante')->onDelete('cascade');
             $table->timestamps();
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('conocimiento_tic');
+        Schema::dropIfExists('organismoinspeccion');
     }
 };
