@@ -1,20 +1,21 @@
 <?php
 
 namespace App\Models;
-use App\Http\Controllers\admin\PostulantesController;
 
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class postulante extends Model
+class Postulante extends Model
 {
+    use HasFactory;
+
     protected $table = 'postulante';
-    protected $primaryKey = 'id_postulante';
-    public $timestamps = true;
+    protected $primaryKey = 'id_postulante'; // Especifica la llave primaria
+    public $timestamps = false; // Desactiva los timestamps automáticos
 
     protected $fillable = [
         'nombres',
-        'apellidos',
+        'apellidos', 
         'cedula_identidad',
         'ciudad_residencia',
         'direccion_residencia',
@@ -26,13 +27,7 @@ class postulante extends Model
         'registro_sigep',
         'matricula_comercio',
         'seguro_salud',
-        'seguro_riesgos',
-        'created_at'
-
+        'seguro_riesgos'
+        // fecha_registro se llenará automáticamente desde la BD
     ];
-
-    public function educaciones()
-    {
-        return $this->hasMany(educacion::class, 'id_postulante', 'id_postulante');
-    }
 }
