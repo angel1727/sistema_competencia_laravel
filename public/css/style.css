@@ -1,0 +1,1312 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,800;1,500&display=swap');
+
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* Body con espacio para navbar fijo */
+body {
+  padding-top: 70px;
+  /* Ajusta según la altura real de tu navbar */
+  font-family: 'Poppins', sans-serif !important;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Títulos responsivos */
+.titulo-xl, .titulo-md, .titulo-sm {
+  color: white;
+  text-align: left;
+  margin: 0;
+  font-size: 1.5rem;
+  white-space: nowrap;
+  display: none; /* Ocultos por defecto */
+}
+
+
+
+/* Pantallas grandes (>1200px): mostrar título completo */
+@media (min-width: 1201px) {
+  .titulo-xl {
+    display: block;
+  }
+}
+
+/* Pantallas medianas (990px - 1200px): mostrar abreviado */
+@media (max-width: 1200px) and (min-width: 991px) {
+  .titulo-md {
+    display: block;
+  }
+}
+
+/* Pantallas pequeñas (<600px): mostrar "POSTULACIONES DTA" */
+@media (max-width: 600px) {
+  .titulo-sm {
+    display: block;
+  }
+}
+/* FIN DE LOS TITULOS RESPONSIVOS */
+
+
+
+/* Navbar fijo visible encima del carrusel */
+.navbar {
+  z-index: 1030;
+  background: #f3a100 !important;
+}
+
+/* Estilos para el botón hamburguesa */
+.navbar-toggler:focus,
+.navbar-toggler:active {
+  outline: none !important;
+  box-shadow: 0 0 0 2px white !important;
+  border: none !important;
+}
+/* Eliminar borde y agregar sombra blanca al enfocar o activar */
+.navbar-toggler {
+  border: 2px solid white;
+  /* Borde blanco del botón */
+}
+.menu-icon {
+  font-size: 25px; /* Puedes ajustar el tamaño */
+  color: white;    /* Para mantenerlo blanco */
+}
+
+.navbar-toggler,
+#offcanvasDarkNavbar {
+  display: block;
+}
+
+/* hacer cambias de los colores de la navegacion lateral */
+.custom-offcanvas-bg {
+  background: #f3a100 !important;
+  color: white !important;
+}
+
+.custom-offcanvas-bg .nav-link,
+.custom-offcanvas-bg .offcanvas-title,
+.custom-offcanvas-bg .dropdown-item,
+.custom-offcanvas-bg .form-control,
+.custom-offcanvas-bg input,
+.custom-offcanvas-bg button {
+  color: white !important;
+}
+
+.custom-offcanvas-bg .form-control::placeholder {
+  color: #f1f1f1 !important;
+}
+
+.custom-offcanvas-bg .btn-close {
+  filter: invert(1);
+}
+
+.acreditacion {
+  display: block;
+  margin: 40px auto;
+  padding: 5px;
+  width: 150px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.acreditacion:hover {
+  transform: scale(1.05);
+}
+/* FIN DE LA NAVEGACION LATERAL */
+
+/*para el texto de la seccion de inicio de la pagina*/
+/*SECCION DE INCIO DE LA PAGINA*/
+.evaluadores-dta p {
+  text-align: justify;
+}
+
+/*estilo de seleccionador de pestañas*/
+  .evaluadores-dta ul {
+    list-style: none; /* Oculta los puntos */
+    padding-left: 0;  /* Elimina el padding predeterminado */
+  }
+
+  .evaluadores-dta li {
+    display: flex;               /* Alinea icono y texto en línea */
+    align-items: flex-start;     /* Alineación superior */
+    gap: 10px;                   /* Espacio entre icono y texto */
+    text-align: justify;         /* Justifica el texto */
+    margin-bottom: 1rem;         /* Espacio entre elementos de lista */
+  }
+
+  .evaluadores-dta li ion-icon {
+    flex-shrink: 0;              /* Evita que el ícono se reduzca */
+    color: #f3a100;              /* (opcional) Cambia el color del icono */
+    margin-top: 3px;             /* Ajuste visual vertical */
+    font-size: 22px;            /* Tamaño del icono */
+  }
+
+/* FIN DE LA SECCION DE INICIO DE LA PAGINA*/
+
+
+
+
+/* REDONE DE CARRUSEL DE CADA CARD */
+/*SECCION DE NUEVO CARRUSEL DE CADA CARD*/
+.wrapper {
+  /* ya tienes esto */
+  max-width: 1100px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  overflow: hidden;
+
+  /* ✅ esto alinea al centro */
+  margin: 0 auto;
+  justify-content: center;
+}
+
+/* Flechas izquierda y derecha */
+.wrapper i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  text-align: center;
+  line-height: 50px;
+  background: #fffbea;
+  border-radius: 50%;
+  box-shadow:
+    0px 3px 6px rgb(243, 161, 0),
+    0 0 0 1px #fea100;
+  transition: transform 0.1s linear;
+}
+
+.wrapper i:active {
+  transform: translateY(-50%) scale(0.85);
+}
+
+.wrapper i:first-child {
+  left: 10px;
+}
+
+.wrapper i:last-child {
+  right: 10px;
+}
+
+/* Carrusel: usa flex en lugar de grid */
+.wrapper .carousel {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  border-radius: 8px;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel.no-transition {
+  scroll-behavior: auto;
+}
+
+.carousel.dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+.carousel.dragging .card {
+  cursor: grab;
+  user-select: none;
+}
+
+.carousel .card {
+  flex: 0 0 calc((100% / 3) - 12px); /* 3 tarjetas por vista */
+  scroll-snap-align: start;
+  flex: 0 0 329px;
+  height: 380px;
+  list-style: none;
+  background: #fff;
+  cursor: pointer;
+  padding-bottom: 15px;
+  flex-direction: column;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.carousel .card .img {
+  background: #fea100;
+  height: 200px;
+  width: 300px;
+  border-radius: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.card .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5%;
+  border: 4px solid #fff;
+}
+
+/* Título debajo de la imagen */
+.carousel .card span {
+  color: #000000;
+  font-size: 25px;
+  margin: 20px 0 5px;
+  font-weight: 500;
+  min-height: 70px;
+  padding: 0 15px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: normal;
+  line-height: 1.2;
+}
+.carousel .card:hover {
+  box-shadow: 0 0 15px 5px rgba(243, 161, 0); /* brillo amarillo */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  transform: scale(1.02); /* pequeño zoom para más efecto */
+}
+
+@media screen and (max-width: 900px) {
+  .wrapper .carousel {
+    grid-auto-columns: calc((100% / 2) - 9px);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .wrapper .carousel {
+    grid-auto-columns: 100%;
+  }
+}
+
+@media screen and (max-width: 700px) and (min-width: 600px) {
+  .carousel .card .img {
+    width: 100%;
+    height: 200px;
+    background: #fea100;        /* 🟡 Borde amarillo */
+    padding: 5px;               /* espacio interno para que el amarillo se vea */
+    box-sizing: border-box;     /* incluye padding en el tamaño */
+    border-radius: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5%;
+    border: 4px solid #fff;     /* 🟣 Borde blanco interno (opcional) */
+  }
+}
+
+
+
+@media screen and (max-width: 1030px) and (min-width: 900px) {
+  .carousel .card .img {
+    width: 100%;
+    height: 200px;
+    background: #fea100;       /* 🟡 borde amarillo */
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5%;
+    border: 4px solid #fff;
+  }
+}
+/* FIN DEL CARRUSEL DE CADA CARD */
+
+
+
+
+/* Carrusel sin altura fija forzada */
+#carouselExampleDark {
+  width: 100%;
+  height: 100%;
+  max-width: auto;
+  height: 575px;
+}
+
+/* Imágenes del carrusel */
+.carousel-inner,
+.carousel-item {
+  height: 100%;
+}
+
+.carousel-item img {
+  width: auto;
+  height: auto;
+  /* Altura proporcional, se adapta automáticamente */
+  object-fit: contain;
+  /* Mostrar toda la imagen sin recorte */
+}
+
+
+/* Captions con unidades en píxeles */
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Fondo semitransparente */
+  padding: 16px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  max-width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+
+/* color del submenu */
+.dropdown-menu-dark {
+  background: #f3a100 !important;
+  /* background: linear-gradient(180deg, #fd7e14, #f19b11) !important; */
+  /* background-color: #fd7e14 !important; */
+  border: 2px solid white !important;
+}
+
+.dropdown-menu-dark .dropdown-item {
+  color: white;
+}
+
+/* selecionador del submenu */
+.dropdown-menu-dark .dropdown-item:hover {
+  /* background: linear-gradient(135deg, #fdc714, #fd7e14) !important; */
+  background-color: #e66b00;
+  /* tono más oscuro para hover */
+}
+
+/* seccion del formulario */
+.formulario {
+  padding-top: 70px;
+  margin-top: -70px;
+  padding-bottom: 35px;
+}
+
+
+
+  .tabs-wrapper {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .tabs-container {
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+    margin: 0px 30px;
+    box-sizing: border-box;
+  }
+
+  .tabs-container::-webkit-scrollbar {
+    display: none; /* Chrome */
+  }
+
+
+  /*botones scroll de los tabs*/
+  .scroll-btn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+     background-color: transparent;
+    border: none;
+    z-index: 10;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fea100;
+  }
+
+  .scroll-left {
+    left: 0;
+  }
+
+  .scroll-right {
+    right: 0;
+  }
+  /*fin de los botones del scroll*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nav-tabs .nav-link {
+  /* color: #fd7e14; */
+  color: #f3a100;
+  /* Cambia este valor al color que desees */
+  font-weight: bold;
+}
+
+.nav-tabs .nav-link.active {
+  color: #fff;
+  background: #f3a100 !important;
+}
+
+.form-check-input {
+  accent-color: #f3a100; /* Cambia el color principal (navegadores modernos) */
+}
+
+/* Estilo adicional para navegadores que no soportan `accent-color` */
+.form-check-input:checked {
+  background-color: #f3a100;
+  border-color: #f3a100;
+}
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(243, 161, 0, 0.25);
+  border-color: #f3a100;
+}
+
+/*CONTROLA EL COLOR O FOCO CUANDO ESTAS EL LOS INPUTS */
+
+.form-control:focus {
+  color: #000000;
+  background-color: #ffffff;
+  border-color: #f3a100;      /* Color del borde al enfocar */
+  box-shadow: 0 0 0 0.2rem rgba(243, 161, 0, 0.4); /* Efecto de sombra al enfocar */
+}
+
+/* /BORDES DE FORMULARIO DEL TAB2/ */
+.formacion-item {
+  border: 2px dashed rgb(243, 161, 0);
+  /* Azul semitransparente */
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+
+/* BOTONES DEL FORMULARIO DEL TAB2 */
+.btn-personalizado {
+  background-color: transparent;
+  /* Sin fondo */
+  color: #000;
+  /* Texto negro */
+  border: 2px solid rgba(243, 161, 0, 0.4);
+  /* Borde translúcido azul */
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.1s ease;
+  padding: 8px 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+
+
+.btn-personalizado:hover {
+  background-color: rgba(243, 161, 0, 1);
+  /* Fondo azul sólido */
+  color: #fff;
+  /* Texto blanco */
+  border-color: rgba(243, 161, 0, 1);
+}
+
+.btn-personalizado.eliminar {
+  border: 2px solid rgba(220, 53, 69, 0.4);
+  /* Rojo translúcido */
+}
+
+.btn-personalizado.eliminar:hover {
+  background-color: rgba(220, 53, 69, 1);
+  /* Rojo sólido */
+  color: #fff;
+  border-color: rgba(220, 53, 69, 1);
+}
+
+.sombra {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+.sombra:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.btn-personalizado:active {
+  transform: scale(0.96);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/*BORDES DE FORMULARIO DEL TAB #1 DE DATOS PERSONALES */ 
+.datos-personales {
+  border: 2px dashed rgba(243, 161, 0);
+  /* Azul semitransparente */
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+
+/*BORDES DE FORMULARIO DEL TAB #3 DE DATOS PERSONALES */ 
+.info-actual-empresa{
+  border: 2px dashed rgba(243, 161, 0);
+  /* Azul semitransparente */
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+
+/* Leyenda flotante sobre el borde */
+.info-actual-empresa__legend {
+  position: absolute;
+  top: -0.9rem;
+  left: 2rem;
+  background-color: #f4f4f4; /* Color de fondo para tapar el borde */
+  padding: 0 0.5rem;
+  font-weight: bold;
+  color: #f3a100;
+  font-size: 0.95rem;
+}
+
+
+
+/* /BORDES DE FORMULARIO DEL TAB #5 DE EXPERIENCIA TECNICA */
+.experiencia-item-1 {
+  border: 2px dashed rgba(243, 161, 0);
+  /* Azul semitransparente */
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  transition: border-color 0.3s ease;
+}
+
+/* Aplica bordes a todos los formularios dentro del acordeón automáticamente */
+/* Bordes de los formularios dentro del acordeón */
+.accordion-body .formacion-item {
+  border: 2px dashed rgba(243, 161, 0);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+/* Select personalizado */
+.form-select {
+  background-color: #fff;
+  border: 1px solid #f3a100;
+  color: #000;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-select:focus {
+  border-color: #f3a100;
+  box-shadow: 0 0 0 0.2rem rgba(243, 161, 0, 0.4);
+  outline: none;
+}
+
+/* Acordeón abierto */
+.accordion-button:not(.collapsed) {
+  background-color: #f3a100 !important;
+  color: white !important;
+}
+
+/* Icono flecha blanco si está abierto */
+.accordion-button:not(.collapsed)::after {
+  filter: brightness(0) invert(1);
+}
+
+/* Acordeón cerrado */
+.accordion-button.collapsed {
+  background-color: #f8f9fa !important;
+  color: black !important;
+}
+
+/* Enfocado */
+.accordion-button:focus {
+  box-shadow: 0 0 0 0.25rem #f3a100;
+  outline: none;
+}
+
+/* Botón personalizado */
+.btn-custom {
+  background: linear-gradient(180deg, #f3a100, #f3a200bd);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+}
+
+.btn-custom:hover {
+  background: linear-gradient(180deg, #e39500, #e39500bd); /* tono más oscuro */
+}
+
+
+
+
+
+
+
+
+
+/*manupulacion de pie de pagina*/
+.info-grid {
+  display: flex;
+  flex-wrap: wrap;
+  /* permite que las columnas bajen si no hay espacio */
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.info-col {
+  flex: 1 1 30%;
+  /* permite 3 columnas lado a lado */
+  min-width: 250px;
+  /* para responsividad */
+}
+
+.info-col h5 {
+  margin-bottom: 30px;
+  font-size: 22px;
+  color: white;
+  text-align: left;
+
+}
+
+.info-col ul {
+  list-style: none;
+  padding-left: 0;
+  text-align: left;
+}
+
+.info-col li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.829);
+}
+
+.info-col .footer {
+  color: #f3a100;
+  font-size: 13px;
+
+}
+
+.info-col .foot {
+  color: #f3a100;
+  font-size: 20px;
+
+}
+
+.info-col p {
+  text-align: left;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.829);
+}
+
+.info-col a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
+/* Sección de contacto */
+.contactos {
+  background: linear-gradient(180deg, #474747, #080808);
+  color: white;
+  padding: 10px 30px 10px 50px;
+  text-align: center;
+  padding-top: 45px;
+  padding-bottom: 35px;
+}
+
+
+/* Texto centrado en el pie de página */
+.fot-p {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 0px !important;
+}
+
+/* Íconos de redes */
+.icons {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0;
+}
+
+.icon-link {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  line-height: 60px;
+  text-align: center;
+  transition: 0.3s;
+  color: white;
+  background-color: #444;
+}
+
+.icon-link:hover {
+  transform: scale(1.1);
+}
+
+.facebook:hover {
+  background-color: #1877f2;
+}
+
+.tiktok:hover {
+  background-color: #010101;
+}
+
+.instagram:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+/* Pie de página */
+.copyright {
+  background: linear-gradient(180deg, #474747, #080808);
+  color: #aaa;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.menu a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+
+
+
+/* CODIGO DEL CONTADOR  DE MAS Y MENOS**/
+/* Estilos generales para el contador */
+/* Estilos para el contador */
+.contador {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/* Estilos para los botones del contador */
+.contador button {
+  background-color: transparent;
+  color: #000;
+  border: 2px solid rgba(243, 161, 0, 0.4);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.1s ease;
+  padding: 8px;
+  font-weight: 500;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contador button:hover {
+  background-color: rgba(243, 161, 0, 1);
+  color: #fff;
+  border-color: rgba(243, 161, 0, 1);
+}
+
+/* Tamaño de los íconos dentro del botón */
+.contador button ion-icon {
+  font-size: 24px;
+}
+
+
+.contador input[type="number"] {
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+
+    /* Ocultar flechitas */
+    -moz-appearance: textfield;
+    -webkit-appearance: none;
+    appearance: textfield;
+}
+/* EL FIN DEL CONTADOR DE MAS Y MENOS**/
+
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .icons {
+    gap: 1rem;
+  }
+
+  .icon-link {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.4rem;
+  }
+
+  .offcanvas-end {
+    width: 250px !important;
+  }
+
+  .carousel-caption {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  #carouselExampleDark {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .carousel-caption {
+    font-size: 12px;
+    padding: 8px;
+    max-width: 50%;
+  }
+
+}
+
+/* Responsivo */
+@media (max-width: 920px) {
+
+  .offcanvas-end {
+    width: 250px !important;
+  }
+
+  .carousel-caption {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  #carouselExampleDark {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .carousel-caption {
+    font-size: 12px;
+    padding: 8px;
+    max-width: 50%;
+  }
+
+  .carousel-item img {
+    width: 100% !important;
+    height: 100%;
+    /* Altura proporcional, se adapta automáticamente */
+    object-fit: contain;
+    /* Mostrar toda la imagen sin recorte */
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ====== Magic Menu Base ====== */
+.magic-menu {
+  position: relative;
+  display: flex;
+  justify-content: center;  /* Centrado horizontal */
+  align-items: center;      /* Centrado vertical */
+  list-style: none;
+  padding-left: 0;
+  margin: 0 auto;
+  height: 100%;             /* Igual altura que el contenedor padre */
+  gap: 4px;                 /* Espaciado entre íconos */
+}
+
+.magic-menu .list {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.magic-menu .list a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-size: 13px;
+  padding: 10px 1px;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
+
+.magic-menu .list .icon {
+  width: 40px;                    /* Tamaño fijo para icon */
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.magic-menu .list .icon ion-icon {
+  color: white;
+  font-size: 25px;
+  transition: color 0.4s ease, transform 0.4s ease;
+}
+
+/* Ocultar texto por defecto */
+.magic-menu .list .text {
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+}
+
+/* Activar ícono (moverlo a la izquierda y mostrar texto) */
+.magic-menu .list.active .icon ion-icon {
+  color: #fea100;
+  transform: translateX(-6px);
+}
+
+.magic-menu .list.active .text {
+  opacity: 1;
+  width: auto;
+  padding-left: 8px;
+}
+
+/* ====== Indicator (círculo animado) ====== */
+.magic-menu .indicator {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 50%;
+  border: 3px solid  #fea100c4;
+  transition: transform 0.3s ease;
+  z-index: -1;
+  transform: translate(0, -50%);
+  box-sizing: border-box;   /* IMPORTANTE: el borde no afecta el ancho */
+}
+
+.magic-menu-desktop {
+  display: block;
+}
+
+.magic-menu-mobile {
+  display: none;
+}
+
+
+
+
+
+
+
+
+/* ====== Magic Menu Styles ====== */
+/* ====== Responsive styles ====== */
+@media (max-width: 600px) {
+  .magic-menu {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+  }
+
+  .magic-menu .list {
+    width: 100%;
+    height: 60px;
+    padding: 0 16px;
+  }
+
+    .magic-menu .indicator {
+    display: block;
+    top: 0;
+    left: 8px; /* para alinearlo a la izquierda del ícono */
+    width: 50px;
+    height: 50px;
+    transform: translateY(0); /* será actualizado con JS */
+  }
+
+  .magic-menu .list .icon {
+    font-size: 1.5rem;
+  }
+
+  .magic-menu .list .text {
+    opacity: 1;
+    transform: none;
+    font-size: 0.85rem;
+    width: auto;
+  }
+
+    .magic-menu-desktop {
+    display: none;
+  }
+
+  .magic-menu-mobile {
+    display: block;
+  }
+
+  /* Además, oculta el botón hamburguesa en desktop si quieres */
+  .navbar-toggler {
+    display: block;
+  }
+}
+
+/* En pantallas grandes (desktop ≥ 600px): ocultar offcanvas y botón */
+@media (min-width: 600px) {
+  .navbar-toggler,
+  #offcanvasDarkNavbar {
+    display: none !important;
+  }
+}
+
+
+
+
+
+/*los documento a requeir*/
+/*requierimientos*/
+.requirements-list ul {
+  list-style: none;
+  padding-left: 0;
+  max-width: none;
+  margin: 20px auto 0;
+  text-align: left;
+}
+
+.requirements-list li {
+  font-size: 16px;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 25px;
+  color: #555;
+}
+
+.filename{
+  font-style: italic; /* opcional, ya está en cursiva por <i> */
+  font-size: 12px;
+  color: #4b4a4a;
+  font-weight: 500;
+  font-size: 13px;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+/* Estilo del ícono */
+.info-icon {
+  position: relative;
+  display: inline-block;
+  font-size: 14px;
+  color: #ff0000;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.info-icon ion-icon {
+  font-size: 22px;  /* o el tamaño que quieras */
+  color: inherit;   /* hereda el color de .info-icon (#888) */
+  vertical-align: middle; /* para alinear con el texto si es necesario */
+}
+
+/* Tooltip oculto por defecto */
+.tooltip-text {
+  visibility: hidden;
+  width: 300px;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  border-radius: 5px;
+  padding: 8px 10px;
+  position: absolute;
+  z-index: 1;
+  /* NUEVO: posicionamiento a la derecha */
+  top: 50%;
+  left: 120%;
+  transform: translateY(-50%);
+
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 13px;
+  line-height: 1.4;
+  white-space: normal;
+}
+
+/* Flechita izquierda (apunta al icono) */
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  margin-left: -12px;
+  margin-top: -6px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent #333 transparent transparent;
+}
+
+/* Mostrar tooltip al pasar mouse o hacer foco */
+.info-icon:hover .tooltip-text,
+.info-icon:focus .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+
+/* Estilos para el botón de Google Forms */
+/* Estilos para el botón de Google Forms */
+.btn-google-form {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #198754;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-google-form:hover {
+    background-color: #157347;
+    text-decoration: none;
+    color: #fff;
+}
+
+.icon-upload {
+    font-size: 22px;
+    vertical-align: middle;
+}
+
+/* Estilos para el botón deshabilitado */
+.btn-google-form.disabled {
+    opacity: 0.7;
+    cursor: not-allowed !important;
+    background-color: #6c757d !important; /* Color gris para indicar deshabilitado */
+}
+
+.btn-google-form.disabled:hover {
+    background-color: #6c757d !important; /* Mantener el mismo color al hover */
+}
+
+/* FIN DE LOS DOCUMENTOS A REQUEIRIR*/
+
+/* Estilo para el texto de información */
+.text-muted {
+    font-size: 0.9rem;
+    color: #6c757d !important;
+}
+
+
+
+
+
+
+
+/* BOTTONES DE TODOS LOS FORMULARIOS (TABS) DE LA PAGINA*/
+/* Asegura que el contenedor tenga el ancho completo y alinee el contenido a la derecha */
+.text-end {
+    width: 100%;
+    text-align: right;
+}
+
+/* Centrar verticalmente el ícono con el texto del botón */
+.btn.btn-success {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Espacio entre ícono y texto */
+}
+
+/* Aumentar el tamaño del ícono */
+.btn.btn-success ion-icon {
+    font-size: 22px !important;
+}
+/* FIN DE LOS BOTONES DE TODOS LOS FORMULARIOS (TABS) DE LA PAGINA*/
