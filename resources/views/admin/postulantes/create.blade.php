@@ -65,35 +65,39 @@
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <label class="form-label">Nombre:</label>
-                                    <input type="text" name="nombre" class="form-control" required>
+                                    <input type="text" name="nombres" class="form-control" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label">Apellido:</label>
-                                    <input type="text" name="apellido" class="form-control" required>
+                                    <input type="text" name="apellidos" class="form-control" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">CI:</label>
-                                    <input type="text" name="ci" class="form-control">
+                                    <input type="text" name="cedula_identidad " class="form-control">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Ciudad:</label>
-                                    <input type="text" name="ciudad" class="form-control">
+                                    <input type="text" name="ciudad_residencia" class="form-control">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Dirección:</label>
-                                    <input type="text" name="direccion" class="form-control">
+                                    <input type="text" name="direccion_residencia" class="form-control">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Nacionalidad:</label>
+                                    <input type="text" name="nacionalidad" class="form-control">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Email:</label>
-                                    <input type="text" name="email" class="form-control">
+                                    <input type="text" name="correo" class="form-control">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Celular:</label>
-                                    <input type="text" name="celular" class="form-control">
+                                    <input type="text" name="telefono_movil" class="form-control">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Teléfono:</label>
-                                    <input type="text" name="telefono" class="form-control">
+                                    <input type="text" name="telefono_fijo" class="form-control">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">NIT:</label>
@@ -101,19 +105,19 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">SIGEP:</label>
-                                    <input type="text" name="sigep" class="form-control">
+                                    <input type="text" name="registro_sigep" class="form-control">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Matricula de Comercio:</label>
-                                    <input type="text" name="matricula" class="form-control">
+                                    <input type="text" name="matricula_comercio" class="form-control">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Seguro de Salud:</label>
-                                    <input type="text" name="seguro" class="form-control">
+                                    <input type="text" name="seguro_salud" class="form-control">
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Seguro de Riesgos:</label>
-                                    <input type="text" name="sriesgos" class="form-control">
+                                    <input type="text" name="seguro_riesgos" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -129,19 +133,19 @@
                                     <div class="row g-3">
                                         <div class="col-md-6">
                                             <label class="form-label">Nivel Académico:</label>
-                                            <input type="text" name="nivelacademico[]" class="form-control">
+                                            <input type="text" name="educacion[0][nivel_academico]" class="form-control">
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label">Grado Obtenido:</label>
-                                            <input type="text" name="gradoacademico[]" class="form-control">
+                                            <input type="text" name="educacion[0][grado_obtenido]" class="form-control">
                                         </div>
                                         <div class="col-md-12">
                                             <label class="form-label">Centro Educativo/Universidad/Instituto:</label>
-                                            <input type="text" name="centroeducativo[]" class="form-control">
+                                            <input type="text" name="educacion[0][centro_educativo]" class="form-control">
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label">Fecha de Título:</label>
-                                            <input type="date" name="fechatitulo[]" class="form-control">
+                                            <input type="date" name="educacion[0][fecha_titulo]" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -957,7 +961,7 @@
                     <!-- Botones -->
                     <div class="modal-footer">
                         <button type="submit" name="accion" value="agregar_completo" class="btn btn-success">
-                            <i class="bi bi-save me-1"></i> Guardar todo
+                            <i class="fa fa-save me-1"></i> Guardar todo
                         </button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">
                             Cerrar
