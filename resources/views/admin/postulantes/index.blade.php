@@ -112,9 +112,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-
-
                                             <div class="col-12 text-center">
                                                 <p>No hay postulantes registrados.</p>
                                             </div>
