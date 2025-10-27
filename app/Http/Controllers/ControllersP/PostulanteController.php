@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ControllersP;
 
-use App\Models\Postulante;
+use App\Models\ModelsP\Postulante;
 use Illuminate\Http\Request;
 
 class PostulanteController extends Controller

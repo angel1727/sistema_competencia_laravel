@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ControllersP;
 
-use App\Models\Educacion;
+use App\Models\ModelsP\Educacion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
